@@ -1908,6 +1908,14 @@ ALTER TABLE [HACCPAttributeValue] ADD CONSTRAINT FK_HACCPAttributeValue_refHACCP
 ALTER TABLE [Product] DROP CONSTRAINT [DF_Product_IsWarehouseQuantityFilled]</M01>
     </SchemaItem>
     <SchemaItem Id="7c7d808f-360d-462c-b461-a62a321bc863" ItemType="DeploymentVersion" Name="3.0.5" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="3.0.5" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="f7edb0c9-302d-4e53-a6f4-9087add22f48" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
+    <SchemaItem Id="b8070011-659e-416c-97cc-56981d7ae8d0" ItemType="DeploymentUpdateScriptActivity" Name="00001_DROP_ix_ReferenceCodeUnique" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="7c7d808f-360d-462c-b461-a62a321bc863">
+      <M01>SELECT * 
+FROM sys.indexes 
+WHERE name='ix_ReferenceCodeUnique' AND object_id = OBJECT_ID('Product')
+
+IF @@ROWCOUNT &gt; 0
+DROP INDEX ix_ReferenceCodeUnique ON Product</M01>
+    </SchemaItem>
     <SchemaItem Id="288d9f0c-7ab1-4ea0-a3ec-602bdd414df6" ItemType="DeploymentUpdateScriptActivity" Name="00010_INSERT_DefaultDistributionCategory" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="7c7d808f-360d-462c-b461-a62a321bc863">
       <M01>INSERT INTO ProductDistributionCategory (Id, Name, RecordCreated)
 VALUES ('5127896c-d023-40da-84a2-bbac31f440e3', 'Výchozí', SYSDATETIME())</M01>
